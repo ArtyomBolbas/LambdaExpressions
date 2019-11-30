@@ -1,6 +1,8 @@
 package com.bolbas.app.referenceOnMethods;
 
 public class MyStringOps {
+	//Статический метод, изменяющий порядок
+	//следования символов в строке
 	public static String strReverse(String str) {
 		String result = "";
 		

@@ -1,6 +1,10 @@
 package com.bolbas.app.referenceOnMethods.objects.highTemp;
 
 public class InstanceMethWithObjectRefDemo {
+	
+	//Метод, возвращающий количество экземпляров объекта ,
+	//найденных по критериям , задаваемым параметром
+	//функционального интерфейс MyFunc
 	public static <T> int counter(T[] vals, MyFunc<T> f, T v) {
 		int count = 0;
 		
@@ -13,15 +17,19 @@ public class InstanceMethWithObjectRefDemo {
 	public static void main(String[] args) {
 		int count;
 		
+		// создать массив объектов типа HighTemp
 		HighTemp[] weekDayHighs = {
 				new HighTemp(89), new HighTemp(82),
 				new HighTemp(90), new HighTemp(89),
 				new HighTemp(89), new HighTemp(91),
 				new HighTemp(84), new HighTemp(83)};
 		
+		// Использовать метод counter() вместе с массивами объектов
+		// типа HighTemp. Обратите внимание на то, что ссылка на метод
+		// экземпляра sameTemp() передается в качестве второго параметра
 		count = counter(weekDayHighs, HighTemp::sameTemp, new HighTemp(89));
 		
-		System.out.println("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 89: " + count);
+		System.out.println("Дней, когда максимальная температура была 89: " + count);
 		
 		HighTemp[] weekDayHighs2 = {
 				new HighTemp(32), new HighTemp(12),
@@ -31,14 +39,14 @@ public class InstanceMethWithObjectRefDemo {
 		
 		count = counter(weekDayHighs2, HighTemp::sameTemp, new HighTemp(12));
 		
-		System.out.println("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 12: " + count);
+		System.out.println("Дней, когда максимальная температура была 12: " + count);
 		
 		count = counter(weekDayHighs, HighTemp::lessThanTemp, new HighTemp(89));
 		
-		System.out.println("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 89: " + count);
+		System.out.println("Дней, когда максимальная температура была меньше 89: " + count);
 		
 		count = counter(weekDayHighs2, HighTemp::lessThanTemp, new HighTemp(19));
 		
-		System.out.println("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 19: " + count);
+		System.out.println("Дней, когда максимальная температура была меньше  19: " + count);
 	}
 }
